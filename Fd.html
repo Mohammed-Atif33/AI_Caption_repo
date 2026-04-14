@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AI Caption Generator</title>
+
+    <style>
+        /* This is for background body */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eff1f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* this is for main box */
+        .main-box {
+            width: 90%;
+            max-width: 600px;
+            background: #020c1b;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* this is for AI CAPTION heading */
+        h1 {
+            text-align: center;
+            color: #38bdf8;
+        }
+
+        .field {
+            margin-bottom: 15px;
+        }
+        
+        /* this is for enter select colour */
+        label {
+            color: #b6b8ba;
+            font-size: 14px;
+        }
+
+        /* this is for input and option of platfrom and tone */
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            background: #334155;
+            color: white;
+        }
+
+        /* this is for generate button and box of it */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #22c55e;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* this is for result box  */
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #020617;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            color: #e2e8f0;
+            min-height: 70px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="main-box">
+    <h1>🚀 AI Caption Generator 🚀</h1>
+
+    <form method="POST" action="/generate">
+
+        <div class="field">
+            <label>Enter Topic??</label>
+            <input type="text" name="topic" required>
+        </div>
+
+        <div class="field">
+            <label>Select Platform</label>
+            <select name="platform">
+                <option>LinkedIn</option>
+                <option>Instagram</option>
+                <option>Twitter</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Select Tone</label>
+            <select name="tone">
+                <option>Normal</option>
+                <option>Professional</option>
+                <option>Funny</option>
+            </select>
+        </div>
+
+        <button class="btn" type="submit">Generate Caption</button>
+    </form>
+
+    <!-- RESULT -->
+    <div class="result-box">
+        {% if caption %}
+            {% if source == "Fallback" %}
+                ⚠️ AI unavailable, showing basic caption <br><br>
+            {% else %}
+                ✨ AI Generated Caption <br><br>
+            {% endif %}
+            {{ caption }}
+        {% else %}
+            Your caption will appear here...
+        {% endif %}
+    </div>
+
+</div>
+
+</body>
+</html>
