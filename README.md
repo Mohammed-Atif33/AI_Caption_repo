@@ -25,6 +25,6 @@ OpenRouter API (or any AI API)
 
 3-Future Improvements
 
-Add more AI models.
+Adding more AI model in this.
 Improve UI design.
 Add download/share options
